@@ -21,7 +21,7 @@ public class College {
         Random random = new Random();
         this.sat = random.nextInt(1200) + 400;
         this.cost = random.nextInt(10000) + 5000;
-        this.major = random.nextInt(50);
+        this.major = random.nextInt(50) + 1;
         this.population = random.nextInt(20000) + 10000;
         this.gpa = (random.nextInt(99) / 100) + (random.nextInt(3) + 2);
         if(this.gpa > 4.50) {
@@ -35,7 +35,7 @@ public class College {
         Random random = new Random();
         this.sat = random.nextInt(1200) + 400;
         this.cost = random.nextInt(10000) + 5000;
-        this.major = random.nextInt(50);
+        this.major = random.nextInt(50) + 1;
         this.population = random.nextInt(20000) + 10000;
         this.gpa = (random.nextInt(99) / 100) + (random.nextInt(3) + 2);
         if(this.gpa > 4.50) {
@@ -73,5 +73,9 @@ public class College {
         name = firstNames[random.nextInt(firstNames.length)] + " " + firstNames[random.nextInt(firstNames.length)] + " " + thirdWord[random.nextInt(thirdWord.length)] + " " + fourthWord[random.nextInt(fourthWord.length)];
 
         return name;
+    }
+
+    public String toString(){
+        return getName();
     }
 }
