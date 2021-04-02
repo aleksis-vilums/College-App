@@ -81,7 +81,7 @@ public class App extends JFrame {
             }
         });
 
-        String s[] = {"Cost (Cheapest First)", "Major", "Population", "SAT Scores", "GPA", "Acceptance Rate"};
+        String s[] = {"Feature not working", "Cost (Cheapest First)", "Major", "Population", "SAT Scores", "GPA", "Acceptance Rate"};
         sortBox = new JComboBox<>(s);
         sortBox.addActionListener(new ActionListener(){
             @Override
