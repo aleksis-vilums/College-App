@@ -181,13 +181,12 @@ public class App extends JFrame {
         createLayout(userName, userNameTextBox, userMajor, userMajorTextBox, sort, addButton, sortBox, collegeSchool, costPerSem, majorPlacement, population, acceptanceRate, avgGPA, avgSAT, 
                     colleges[0][0], colleges[0][1], colleges[0][2], colleges[0][3], colleges[0][4], colleges[0][5], colleges[0][6],
                     colleges[1][0], colleges[1][1], colleges[1][2], colleges[1][3], colleges[1][4], colleges[1][5], colleges[1][6],
-                    colleges[2][0], colleges[2][1], colleges[2][2], colleges[2][3], colleges[2][4], colleges[2][5], colleges[2][6]);//Method called to place
+                    colleges[2][0], colleges[2][1], colleges[2][2], colleges[2][3], colleges[2][4], colleges[2][5], colleges[2][6]);
 
         setTitle("College App");
-        //      width, height
         setSize(1000, 1000);
-        setLocationRelativeTo(null);// Center aline on the screen
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// When close is pressed it closes
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void arrayListToRowsAndCol(ArrayList<College> collegeList){
@@ -208,7 +207,7 @@ public class App extends JFrame {
         pane.setLayout(gl);
         
         gl.setAutoCreateGaps(true);
-        gl.setAutoCreateContainerGaps(true); // Creates gaps
+        gl.setAutoCreateContainerGaps(true);
 
         SequentialGroup college1StatsHorizontal = gl.createSequentialGroup();
         ParallelGroup college1StatsVerticle= gl.createParallelGroup();
@@ -293,9 +292,5 @@ public class App extends JFrame {
             App calc = new App();
             calc.setVisible(true);
         });
-
-        // for(int x = 0; x >= 10; x++) {
-        //     College[] RaCollege = new College[x];
-        // }
     }
 }
