@@ -19,7 +19,14 @@ public class College {
     //Random Constructor
     College() {
         Random random = new Random();
-        this.sat = random.nextInt(1200) + 400;
+        int satChooser = random.nextInt(99);
+        if(satChooser < 14) { 
+            this.sat = random.nextInt(99) + 700;
+        } else if(satChooser >= 15 && satChooser < 84) {
+            this.sat = random.nextInt(399) + 800;
+        } else if(satChooser >= 84) {
+            this.sat = random.nextInt(249) + 1200;
+        }
         this.cost = random.nextInt(10000) + 5000;
         this.major = random.nextInt(50) + 1;
         this.population = random.nextInt(20000) + 10000;
@@ -73,9 +80,5 @@ public class College {
         name = firstNames[random.nextInt(firstNames.length)] + " " + firstNames[random.nextInt(firstNames.length)] + " " + thirdWord[random.nextInt(thirdWord.length)] + " " + fourthWord[random.nextInt(fourthWord.length)];
 
         return name;
-    }
-
-    public String toString(){
-        return getName();
     }
 }

@@ -75,8 +75,22 @@ public class App extends JFrame {
                     colleges[2][5].setText("Average GPA: " + String.valueOf(college.getGPA()));
                     colleges[2][6].setText("Average SAT: " + Integer.toString(college.getSAT()));
                     collegeList.add(college);
+                } else if (colleges[3][0].getText().isEmpty()){
+                    String name = JOptionPane.showInputDialog("College Name?");
+                    if(name.equals("")){
+                        name = JOptionPane.showInputDialog("You didn't put a Name. Please enter one.");
+                    }
+                    College college = new College(name);
+                    colleges[3][0].setText("College Name: " + college.getName());
+                    colleges[3][1].setText("Cost Per Semester: $" + college.getCost());
+                    colleges[3][2].setText(userMajorTextBox.getText() + " Placement: " + college.getMajor() + "/50");
+                    colleges[3][3].setText("Population: " + Integer.toString(college.getPopulation()));
+                    colleges[3][4].setText("Accepatance Rate: " + String.valueOf(college.getAcceptanceRate()) + "%");
+                    colleges[3][5].setText("Average GPA: " + String.valueOf(college.getGPA()));
+                    colleges[3][6].setText("Average SAT: " + Integer.toString(college.getSAT()));
+                    collegeList.add(college);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Sorry, there is a limit of 3 colleges.");
+                    JOptionPane.showMessageDialog(null, "Sorry, there is a limit of 4 colleges.");
                 }
             }
         });
@@ -189,7 +203,6 @@ public class App extends JFrame {
 
     public void arrayListToRowsAndCol(ArrayList<College> collegeList){
         for(int i = 0; i < collegeList.size(); i++){
-            System.out.println(collegeList.get(i).getName());
             colleges[i][0].setText("College Name: " + collegeList.get(i).getName());
             colleges[i][1].setText("Cost Per Semester: $" + collegeList.get(i).getCost());
             colleges[i][2].setText(userMajorTextBox.getText() + " Placement: " + collegeList.get(i).getMajor() + "/50");
@@ -214,6 +227,8 @@ public class App extends JFrame {
         ParallelGroup college2StatsVerticle = gl.createParallelGroup();
         SequentialGroup college3StatsHorizontal = gl.createSequentialGroup();
         ParallelGroup college3StatsVerticle = gl.createParallelGroup();
+        SequentialGroup college4StatsHorizontal = gl.createSequentialGroup();
+        ParallelGroup college4StatsVerticle = gl.createParallelGroup();
 
         //GroupLayout
         gl.setHorizontalGroup(gl.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -236,7 +251,8 @@ public class App extends JFrame {
                 .addComponent(args[13]))
             .addGroup(college1StatsHorizontal)
             .addGroup(college2StatsHorizontal)
-            .addGroup(college3StatsHorizontal));
+            .addGroup(college3StatsHorizontal)
+            .addGroup(college4StatsHorizontal));
 
             for (int i = 14; i <= 20; i++){
                 college1StatsHorizontal.addComponent(args[i]);
@@ -248,6 +264,10 @@ public class App extends JFrame {
             
             for (int i = 28; i <= 34; i++){
                 college3StatsHorizontal.addComponent(args[i]);
+            }
+
+            for (int i = 35; i <= 41; i++){
+                college4StatsHorizontal.addComponent(args[i]);
             }
 
         gl.setVerticalGroup(gl.createSequentialGroup()
@@ -282,6 +302,10 @@ public class App extends JFrame {
 
             for (int i = 28; i <= 34; i++){
                 college3StatsVerticle.addComponent(args[i]);
+            }
+
+            for (int i = 35; i <= 41; i++){
+                college4StatsVerticle.addComponent(args[i]);
             }
 
     }
