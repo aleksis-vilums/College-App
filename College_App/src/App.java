@@ -81,7 +81,7 @@ public class App extends JFrame {
             }
         });
 
-        String s[] = {"Feature not working", "Cost (Cheapest First)", "Major", "Population", "SAT Scores", "GPA", "Acceptance Rate"};
+        String s[] = {"Cost (Cheapest First)", "Major", "Population", "SAT Scores", "GPA", "Acceptance Rate"};
         sortBox = new JComboBox<>(s);
         sortBox.addActionListener(new ActionListener(){
             @Override
@@ -89,78 +89,76 @@ public class App extends JFrame {
                 String option = String.valueOf(sortBox.getSelectedItem());
                 switch (option){
                     case "Cost (Cheapest First)": 
-                        for(int i = 0; i < colleges.length; i++){
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getCost() < collegeList.get(i).getCost()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getCost() < collegeList.get(min).getCost()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
+                        break;
                     case "Major":
-                        for(int i = 0; i < colleges.length; i++){
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getMajor() < collegeList.get(i).getMajor()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getMajor() < collegeList.get(min).getMajor()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
+                        break;
                     case "Population":
-                        for(int i = 0; i < colleges.length; i++){
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getPopulation() < collegeList.get(i).getPopulation()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getPopulation() < collegeList.get(min).getPopulation()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
+                        break;
                     case "SAT Scores":
-                        for(int i = 0; i < colleges.length; i++){
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getSAT() < collegeList.get(i).getSAT()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getSAT() < collegeList.get(min).getSAT()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
+                        break;
                     case "GPA":
-                        for(int i = 0; i < colleges.length; i++){
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getGPA() < collegeList.get(i).getGPA()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getGPA() < collegeList.get(min).getGPA()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
-                    case "Acceptace Rate":
-                        for(int i = 0; i < colleges.length; i++){
+                        break;
+                    case "Acceptance Rate":
+                        for(int i = 0; i < collegeList.size(); i++){
                             int min = i;
-                            for(int x = i; x < colleges.length; x++){
-                                if (collegeList.get(x).getAcceptanceRate() < collegeList.get(i).getAcceptanceRate()){
+                            for(int x = i; x < collegeList.size(); x++){
+                                if (collegeList.get(x).getAcceptanceRate() < collegeList.get(min).getAcceptanceRate()){
                                     min = x;
                                 }
                             }
-
                             Collections.swap(collegeList, i, min);
                         }
                         arrayListToRowsAndCol(collegeList);
-
                 }
             }
         });
@@ -191,6 +189,7 @@ public class App extends JFrame {
 
     public void arrayListToRowsAndCol(ArrayList<College> collegeList){
         for(int i = 0; i < collegeList.size(); i++){
+            System.out.println(collegeList.get(i).getName());
             colleges[i][0].setText("College Name: " + collegeList.get(i).getName());
             colleges[i][1].setText("Cost Per Semester: $" + collegeList.get(i).getCost());
             colleges[i][2].setText(userMajorTextBox.getText() + " Placement: " + collegeList.get(i).getMajor() + "/50");
