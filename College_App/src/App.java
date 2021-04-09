@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class App extends JFrame {
     private JLabel userName, userMajor, sort, collegeSchool, costPerSem, majorPlacement, population, acceptanceRate, avgGPA, avgSAT;
-    private JLabel[][] colleges = new JLabel[5][7];
+    private JLabel[][] colleges = new JLabel[6][7];
     private JTextField userNameTextBox, userMajorTextBox;
     private JButton addButton;
     private JComboBox<String> sortBox;
@@ -105,8 +105,22 @@ public class App extends JFrame {
                     colleges[4][5].setText("Average GPA: " + String.valueOf(college.getGPA()));
                     colleges[4][6].setText("Average SAT: " + Integer.toString(college.getSAT()));
                     collegeList.add(college);
+                } else if (colleges[5][0].getText().isEmpty()){
+                    String name = JOptionPane.showInputDialog("College Name?");
+                    if(name.equals("")){
+                        name = JOptionPane.showInputDialog("You didn't put a Name. Please enter one.");
+                    }
+                    College college = new College(name);
+                    colleges[5][0].setText("College Name: " + college.getName());
+                    colleges[5][1].setText("Cost Per Semester: $" + college.getCost());
+                    colleges[5][2].setText(userMajorTextBox.getText() + " Placement: " + college.getMajor() + "/50");
+                    colleges[5][3].setText("Population: " + Integer.toString(college.getPopulation()));
+                    colleges[5][4].setText("Accepatance Rate: " + String.valueOf(college.getAcceptanceRate()) + "%");
+                    colleges[5][5].setText("Average GPA: " + String.valueOf(college.getGPA()));
+                    colleges[5][6].setText("Average SAT: " + Integer.toString(college.getSAT()));
+                    collegeList.add(college);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Sorry, there is a limit of 5 colleges.");
+                    JOptionPane.showMessageDialog(null, "Sorry, there is a limit of 6 colleges.");
                 }
             }
         });
@@ -212,7 +226,8 @@ public class App extends JFrame {
                     colleges[1][0], colleges[1][1], colleges[1][2], colleges[1][3], colleges[1][4], colleges[1][5], colleges[1][6],
                     colleges[2][0], colleges[2][1], colleges[2][2], colleges[2][3], colleges[2][4], colleges[2][5], colleges[2][6],
                     colleges[3][0], colleges[3][1], colleges[3][2], colleges[3][3], colleges[3][4], colleges[3][5], colleges[3][6],
-                    colleges[4][0], colleges[4][1], colleges[4][2], colleges[4][3], colleges[4][4], colleges[4][5], colleges[4][6]);
+                    colleges[4][0], colleges[4][1], colleges[4][2], colleges[4][3], colleges[4][4], colleges[4][5], colleges[4][6],
+                    colleges[5][0], colleges[5][1], colleges[5][2], colleges[5][3], colleges[5][4], colleges[5][5], colleges[5][6]);
 
         setTitle("College App");
         setSize(1000, 1000);
@@ -250,6 +265,8 @@ public class App extends JFrame {
         ParallelGroup college4StatsVerticle = gl.createParallelGroup();
         SequentialGroup college5StatsHorizontal = gl.createSequentialGroup();
         ParallelGroup college5StatsVerticle = gl.createParallelGroup();
+        SequentialGroup college6StatsHorizontal = gl.createSequentialGroup();
+        ParallelGroup college6StatsVerticle = gl.createParallelGroup();
 
         //GroupLayout
         gl.setHorizontalGroup(gl.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -274,7 +291,8 @@ public class App extends JFrame {
             .addGroup(college2StatsHorizontal)
             .addGroup(college3StatsHorizontal)
             .addGroup(college4StatsHorizontal)
-            .addGroup(college5StatsHorizontal));
+            .addGroup(college5StatsHorizontal)
+            .addGroup(college6StatsHorizontal));
 
             for (int i = 14; i <= 20; i++){
                 college1StatsHorizontal.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
@@ -294,6 +312,10 @@ public class App extends JFrame {
 
             for (int i = 42; i <= 48; i++){
                 college5StatsHorizontal.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
+            }
+
+            for (int i = 49; i <= 55; i++){
+                college6StatsHorizontal.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
             }
 
         gl.setVerticalGroup(gl.createSequentialGroup()
@@ -318,7 +340,8 @@ public class App extends JFrame {
             .addGroup(college2StatsVerticle)
             .addGroup(college3StatsVerticle)
             .addGroup(college4StatsVerticle)
-            .addGroup(college5StatsVerticle));
+            .addGroup(college5StatsVerticle)
+            .addGroup(college6StatsVerticle));
 
             for (int i = 14; i <= 20; i++){
                 college1StatsVerticle.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
@@ -338,6 +361,10 @@ public class App extends JFrame {
 
             for (int i = 42; i <= 48; i++){
                 college5StatsVerticle.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
+            }
+
+            for (int i = 49; i <= 55; i++){
+                college6StatsVerticle.addComponent(args[i], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE);
             }
     }
 
